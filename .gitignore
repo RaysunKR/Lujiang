@@ -66,3 +66,6 @@ __pycache__/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# ===== Internal spec doc (not for public repo) =====
+需求.md
