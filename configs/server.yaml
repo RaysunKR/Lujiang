@@ -1,0 +1,15 @@
+listen: ":7443"
+
+# P2 启用自签 TLS（生产请自带正式证书）。
+auto_tls: true
+
+web_users:
+  - username: admin
+    # bcrypt("changeme") —— 用 `go run scripts/genhash.go` 或 htpasswd 重生成。
+    password_hash: "$2a$10$sD0lYKVuqExu.Ps1cZyVqu0YjlAqIUvJWmhInbhyjem3XMTf6qThq"
+
+clients:
+  - id: dev-box
+    token: "dev-box-shared-secret-change-me"
+
+session_secret: ""

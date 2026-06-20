@@ -1,0 +1,21 @@
+listen: ":7443"
+
+# 缺省时为 false。P2 实现自签证书后改为 true 即可启用。
+auto_tls: false
+# cert_file: "./configs/server.crt"
+# key_file:  "./configs/server.key"
+
+# 浏览器登录账号。password_hash 是 bcrypt 散列，可用 htpasswd 生成：
+#   htpasswd -nbBC 12 "" 'changeme' | cut -d: -f2
+web_users:
+  - username: admin
+    password_hash: "$2a$12$abcdefghijklmnopqrstuvABCDEFGHIJKLMNOPQRSTUVWXYZ012345"
+
+# 允许接入的客户端白名单。token 是服务端与客户端共享的预共享密钥。
+clients:
+  - id: dev-box
+    token: "dev-box-shared-secret-change-me"
+
+# session cookie HMAC 密钥。生产环境务必设置为一个 32+ 字节随机串。
+# 为空时服务端启动会随机生成（重启后旧 cookie 失效）。
+session_secret: ""

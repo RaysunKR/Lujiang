@@ -1,0 +1,22 @@
+[Unit]
+Description=Lujiang remote-access gateway (server)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=lujiang
+Group=lujiang
+WorkingDirectory=/opt/lujiang
+ExecStart=/opt/lujiang/lujiang-server -config /opt/lujiang/server.yaml
+Restart=on-failure
+RestartSec=3
+# 安全加固：无特权 + 只读 /opt/lujiang
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/lujiang
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

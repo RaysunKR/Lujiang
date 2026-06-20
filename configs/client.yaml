@@ -1,0 +1,14 @@
+id: dev-box
+token: "dev-box-shared-secret-change-me"
+
+# 服务端隧道接入地址。P1 用 ws://；P2 启用 TLS 后改为 wss://。
+server_url: "wss://127.0.0.1:7443/api/tunnel"
+
+# P2 启用 TLS（自签），客户端跳过证书校验。
+tls_skip_verify: true
+
+# 项目默认根目录（相对路径基于客户端工作目录）。
+workspace_root: "."
+
+# SQLite 等本地状态存放目录。
+data_dir: "./data"

@@ -1,0 +1,20 @@
+[Unit]
+Description=Lujiang remote-access client
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=lujiang
+Group=lujiang
+WorkingDirectory=/opt/lujiang
+ExecStart=/opt/lujiang/lujiang-client -config /opt/lujiang/client.yaml
+Restart=on-failure
+RestartSec=3
+# 客户端需要 spawn PTY + 子进程，sandbox 不能太严。
+NoNewPrivileges=true
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

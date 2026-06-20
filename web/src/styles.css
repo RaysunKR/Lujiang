@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0b1020;
+  --color-base: #0b1020;
+  --color-panel: #131a30;
+  --color-border: #283358;
+  --color-accent: #6ee7b7;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: #e6edf3;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* 移动端：触摸目标 ≥44px；按需调整字号；避免横向滚动。 */
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+  /* 表格/树形列表在窄屏里让每行更紧凑。 */
+  table th,
+  table td {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  /* 头部按钮在窄屏改用图标-only；label 通过 title 暴露。 */
+  .header-action-label {
+    display: none;
+  }
+}
+
+/* 触屏：让 input/textarea 不会触发 iOS 的缩放（必须 ≥16px font-size）。 */
+@media (pointer: coarse) {
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
+/* markdown 排版（web 标准 markdown 容器选择器）。
+ * 关键：所有容器层 min-width:0 + 长内容（URL / 代码 / 表格）自身滚动，
+ * 不能让它们把 flex 链撑出 viewport。 */
+.markdown-body {
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  min-width: 0;
+  max-width: 100%;
+}
+.markdown-body pre {
+  overflow-x: auto;
+  max-width: 100%;
+  white-space: pre;
+}
+.markdown-body pre code {
+  white-space: pre;
+  display: block;
+  min-width: 0;
+}
+.markdown-body code {
+  font-family: ui-monospace, "SF Mono", Consolas, Monaco, monospace;
+  font-size: 0.875em;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+.markdown-body table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.markdown-body img {
+  max-width: 100%;
+}
+.markdown-body a {
+  word-break: break-all;
+}
+
